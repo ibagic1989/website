@@ -1,0 +1,310 @@
+
+:root {
+  --primary: #009ee0;
+  --primary-darker: #0082B8;
+  --secondary: #173753;
+  --secondary-darker: #15324c;
+  --secondary-darkest: #132e44;
+  --light-blue: #b9e4f6;
+  --light-blue-lighter: #f8fcfe;
+  --warning: #ffc107;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+#layout-wrapper {
+  display: flex;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-wrapper {
+  height: 80px;
+  display: flex;
+  padding-left: 1rem;
+  align-items: center;
+  background-color: var(--primary);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.logo-wrapper h3 {
+  font-size: 1.25rem;
+  display: inline;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: #fff;
+}
+
+.logo-wrapper .fa-virus {
+  font-size: 2.75rem;
+  color: var(--light-blue);
+  margin-right: .75rem;
+}
+
+.topbar {
+  background-color:var(--secondary);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+main {
+  width: 100%;
+  margin-left: 320px;
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+.card {
+  padding: 1.25rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  /* background-color: var(--primary); */
+  color: #fff;
+  border-radius: 4px;
+}
+
+.card span {
+  display: block;
+}
+
+#affectedCountries-wrapper {
+  background-color: var(--secondary-darker);
+  color: #fff;
+}
+
+#affectedCountries-wrapper .title {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  display: flex;
+  justify-content: space-between;
+}
+
+#affectedCountries-wrapper .title h3 {
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+#affectedCountries-wrapper .sort-list {
+  display: inline-block;
+  background-color: var(--secondary);
+  padding-left: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+#affectedCountries-wrapper .sort-list li {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  padding: .5rem 1.25rem;
+  cursor: pointer;
+}
+
+.sort-button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100px;
+  border:1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background-color: var(--secondary-darkest);
+  color: #fff;
+  padding: .5rem .75rem;
+  cursor: pointer;
+}
+
+#affectedCountries-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  height: calc(100vh - 150px);
+  overflow-y: hidden;
+}
+
+#affectedCountries-list:hover {
+  overflow-y: scroll;
+}
+
+.affectedCountry {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--secondary-darker);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.affectedCountry img {
+  width: 44px;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.affectedCountry h4 {
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.affectedCountry span {
+  font-size: .75rem;
+  padding: 2px 6px;
+  margin-right: 8px;
+  text-transform: capitalize;
+  color: #fff
+}
+
+.affectedCountry span:first-of-type:before {
+  content: "Zaraženih: ";
+}
+
+.affectedCountry span:last-of-type:before {
+  content: "Umrlih: ";
+}
+
+
+/* Scrollbar style */
+
+#affectedCountries-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+#affectedCountries-list::-webkit-scrollbar-track {
+  background-color: var(--secondary-darker);
+}
+
+#affectedCountries-list::-webkit-scrollbar-thumb {
+  background: var(--primary); 
+  border-radius: 10px;
+  height: 80px;
+  transition: color .4s;
+}
+
+#affectedCountries-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-darker); 
+}
+
+
+footer {
+  background-color: var(--secondary-darker);
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .7);
+  font-weight: 300;
+}
+
+#chartdiv {
+  max-width: 100%;
+  height: 98vh;
+}
+
+#chartdiv1 {
+  max-width: 100%;
+  height: 400px;
+}
+
+#chartdiv2 {
+  max-width: 100%;
+  height: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Global styles */
+p, h1, h2, h3, h4, h5 h6 {
+  margin-top: 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-0 {
+  margin-top: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.d-block {
+  display: block;
+}
+
+.icon {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.warning {
+  background-color: var(--warning);
+}
+
+.fade {
+  color: rgba(255, 255, 255, .7);
+}
+
+.text-white {
+  color: #fff;
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-secondary-darker {
+  background-color: var(--secondary-darker);
+}
+
+.bg-secondary-darkest {
+  background-color: var(--secondary-darkest);
+}

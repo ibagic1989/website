@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="layout-wrapper">
+
+    <!-- Sidebar container -->
+    <header>
+      <div class="logo-wrapper">
+        <!-- <img class="logo" src="img/virus.svg" alt=""> -->
+        <i class="fas fa-virus"></i>
+        <h3>COVID-19 STATISTIKA</h3>
+      </div>
+
+      <!-- Affected countries -->
+      <div id="affectedCountries-wrapper">
+        <div class="title">
+          <h3>Zaražene države</h3>
+
+          <button class="sort-button" type="button">Sortiraj<i class="fas fa-sort"></i></button>
+          <div uk-drop="mode: click">
+            <ul class="sort-list">
+              <li>Broj zaraženih</li>
+              <li>Broj umrlih</li>
+            </ul>
+          </div>
+        </div>
+        <ul id="affectedCountries-list"></ul>
+      </div>
+
+    </header>
+
+    <!-- Main container -->
+    <main>
+
+      <!-- Top bar -->
+      <section class="topbar">
+        <p class="fade uk-margin-remove">Ažurirano: <span id="updated"></span></p>
+      </section>
+
+      <!-- Carousel -->
+      <div uk-slider="autoplay: true" class="uk-light">
+        <ul class="uk-slider-items uk-child-width-1">
+          <li>
+            <!-- Section Hrvatska statistics -->
+            <section id="all-statistics" class="uk-container uk-padding">
+              <h3 class="mb-1">Hrvatska</h3>
+
+              <div class="uk-grid-match uk-child-width-1-4@m" uk-grid>
+
+                <!-- Recovered -->
+                <div>
+                  <div class="card d-flex align-center uk-label-success">
+                    <i class="fas fa-walking icon"></i>
+                    <div>
+                      <span class="bold">Ukupno oporavljenih:</span>
+                      <span id="recoveredHrv"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cases -->
+                <div>
+                  <div class="card d-flex align-center uk-label-warning">
+                    <i class="fas fa-procedures icon"></i>
+                    <div>
+                      <span class="bold">Ukupno zaraženih:</span>
+                      <span id="casesHrv"></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Deaths -->
+                <div>
+                  <div class="card d-flex align-center uk-label-danger">
+                    <i class="fas fa-bed icon"></i>
+                    <div>
+                      <span class="bold">Ukupno umrlih:</span>
+                      <span id="deathsHrv"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Today cases -->
+                <div>
+                  <div class="card d-flex align-center warning">
+                    <i class="fas fa-calendar-day icon"></i>
+                    <div>
+                      <span class="bold">Broj zaraženih danas:</span>
+                      <span id="todayCasesHrv"></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </li>
+          <li>
+            <!-- Section all statistics -->
+            <section id="all-statistics" class="uk-container uk-padding">
+              <h3 class="mb-1">Cijeli svijet</h3>
+
+              <div class="uk-grid-match uk-child-width-1-4@m" uk-grid>
+
+                <!-- Recovered -->
+                <div>
+                  <div class="card d-flex align-center uk-label-success">
+                    <i class="fas fa-walking icon"></i>
+                    <div>
+                      <span class="bold">Ukupno oporavljenih:</span>
+                      <span id="recovered">218573</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cases -->
+                <div>
+                  <div class="card d-flex align-center uk-label-warning">
+                    <i class="fas fa-procedures icon"></i>
+                    <div>
+                      <span class="bold">Ukupno zaraženih:</span>
+                      <span id="cases">1026688</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Deaths -->
+                <div>
+                  <div class="card d-flex align-center uk-label-danger">
+                    <i class="fas fa-bed icon"></i>
+                    <div>
+                      <span class="bold">Ukupno umrlih:</span>
+                      <span id="deaths">54045</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Today cases -->
+                <div>
+                  <div class="card d-flex align-center warning">
+                    <i class="fas fa-calendar-day icon"></i>
+                    <div>
+                      <span class="bold">Broj zaraženih danas:</span>
+                      <span id="affectedCountries">206</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </li>
+        </ul>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+      </div>
+
+      <!-- Interactive map -->
+      <div class="uk-container uk-padding">
+        <div class="card bg-secondary-darker">
+          <h3 class="text-white">Interaktivna karta</h3>
+          <div id="chartdiv"></div>
+        </div>
+      </div>
+
+      <div class="uk-container uk-padding">
+        <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+          <!-- Column xychart -->
+          <div>
+            <div class="card bg-secondary-darker">
+              <h3 class="text-white">Susjedne države</h3>
+              <div id="chartdiv1"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card bg-secondary-darker">
+              <h3 class="text-white">Povijest zaraze za hrvatsku</h3>
+              <div id="chartdiv2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="p-2">
+        © Ivan Bagić. All rights reserved.
+      </footer>
+
+    </main>
+
+  </div>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+  <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
