@@ -212,8 +212,6 @@ function createMap(mapData) {
   // Create map instance
   var chart = am4core.create("chartdiv", am4maps.MapChart);
 
-  chart.responsive.enabled = true;
-
   // Set map definition
   chart.geodata = am4geodata_worldLow;
 

@@ -48,7 +48,7 @@ header {
 
 .logo-wrapper .fa-virus {
   font-size: 2.75rem;
-  color: var(--light-blue);
+  color: #fff;
   margin-right: .75rem;
 }
 
@@ -124,12 +124,12 @@ header {
 }
 
 .label-danger {
-  background-color: rgba(220, 53, 69, 0.8);
+  background-color: var(--danger);
   border-radius: 4px;
 }
 
 .label-warning {
-  background-color: rgba(253, 126, 20, 0.8);
+  background-color: var(--orange);
 }
 
 .label-danger,
@@ -185,6 +185,13 @@ main {
 #topbar div {
   height: 80px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-indicators {
+  top: 0;
+  right: 0;
+  left: unset;
+  margin-right: 30px;
 }
 
 .co-card {
@@ -310,6 +317,10 @@ p, span {
   .container-fluid {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .carousel-indicators {
+    margin-right: 15px;
   }
 
   #chartdiv,
