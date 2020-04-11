@@ -606,6 +606,9 @@ function createTop5Cases(data) {
   series.labels.template.fill = am4core.color("#fff");
   series.ticks.template.disabled = true;
 
+  series.labels.template.text = "{name}: {cases}";
+  series.slices.template.tooltipText = "{name}: {cases}";
+
 
   series.slices.template.cornerRadius = 10;
   series.slices.template.innerCornerRadius = 7;
@@ -619,7 +622,7 @@ function createTop5Cases(data) {
   chart.legend = new am4charts.Legend();
   chart.legend.labels.template.fill = am4core.color("#fff");
   chart.legend.valueLabels.template.fill = am4core.color("#fff");
-
+  chart.legend.valueLabels.template.text = "{cases}";
 }
 
 
