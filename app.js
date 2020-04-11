@@ -631,11 +631,13 @@ function openSidebar() {
   sidebar.style.left = "0";
   closeSidebarIcon.style.right = "0";
   closeSidebarIcon.classList.add("fa-times");
+  closeSidebarIcon.classList.remove("fa-angle-right");
 }
 
 function closeSidebar() {
   sidebar.style.left = "-320px";
   closeSidebarIcon.style.right = "-40px";
+  closeSidebarIcon.classList.add("fa-angle-right");
   closeSidebarIcon.classList.remove("fa-times");
 }
 
@@ -644,7 +646,7 @@ function toggleSidebar() {
 }
 
 closeSidebarIcon.addEventListener("click", function () {
-  this.classList.toggle("fa-angle-right");
+  // this.classList.toggle("fa-angle-right");
   toggleSidebar();
   mainContent.classList.toggle("ml-0");
 });
@@ -652,7 +654,9 @@ closeSidebarIcon.addEventListener("click", function () {
 
 function mediaQueryMatches(x) {
   if (x.matches) { // If media query matches
-    closeSidebarIcon.classList.toggle("fa-angle-right");
+    closeSidebarIcon.classList.add("fa-angle-right");
+    closeSidebarIcon.classList.remove("fa-times");
+    // closeSidebarIcon.classList.toggle("fa-angle-right");
     sidebar.style.left = "-320px";
     closeSidebarIcon.style.right = "-40px";
   } else {
