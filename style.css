@@ -14,6 +14,39 @@ ul {
   padding-left: 0;
 }
 
+body {
+  position: relative;
+  overflow-y: hidden;
+}
+
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: var(--secondary);
+  color: #fff;
+  z-index: 1000;
+}
+
+#loader .fa-virus {
+  margin-bottom: 1.25rem;
+  font-size: 3rem;
+  display: block;
+}
+
+#loader h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.25rem;
+}
+
 
 /* ==========================================================================
    Header
@@ -125,15 +158,21 @@ header {
 
 .label-danger {
   background-color: var(--danger);
-  border-radius: 4px;
 }
 
 .label-warning {
   background-color: var(--orange);
 }
 
+.badge-orange {
+  background-color: var(--orange);
+}
+
+
+.label-success,
 .label-danger,
-.label-warning {
+.label-warning,
+.label-orange {
   border-radius: 4px;
 }
 
@@ -178,10 +217,6 @@ main {
   transition: .2s all;
 }
 
-#topbar {
-  background-color:var(--secondary);
-}
-
 #topbar div {
   height: 80px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -203,7 +238,7 @@ main {
   height: 100%;
 }
 
-.co-card span {
+.co-card span:first-of-type {
   display: block;
 }
 
@@ -211,6 +246,17 @@ main {
 footer {
   border-top: 1px solid rgba(255, 255, 255, .1);
   background-color: var(--secondary-darker);
+}
+
+footer a {
+  color: #fff;
+  transition: all .4s;
+}
+
+footer a:hover {
+  color: var(--primary);
+  opacity: 1;
+  text-decoration: none;
 }
 
 #chartdiv {
@@ -229,6 +275,11 @@ footer {
 }
 
 #chartdiv3 {
+  max-width: 100%;
+  height: 500px;
+}
+
+#chartdiv4 {
   max-width: 100%;
   height: 500px;
 }
@@ -252,7 +303,6 @@ footer {
 }
 
 .icon {
-  margin-right: 1rem;
   font-size: 1.5rem;
 }
 
@@ -269,8 +319,11 @@ footer {
 }
 
 .text-white {
-  color: #fff;
   opacity: .7;
+}
+
+.bg-secondary {
+  background-color: var(--secondary)!important;
 }
 
 .bg-secondary-darker {
@@ -297,6 +350,16 @@ footer {
   border-top: 3px solid var(--orange);
 }
 
+
+@media only screen and (max-width: 576px) {
+  .icon {
+    display: none;
+  }
+  
+  #loader h3 {
+    font-size: 1.75rem;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   header {
@@ -325,10 +388,6 @@ footer {
   #chartdiv2,
   #chartdiv3 {
     height: 360px;
-  }
-
-  .icon {
-    display: none;
   }
 
 }

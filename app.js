@@ -1,3 +1,7 @@
+/**
+ * autor: Ivan Bagić
+ */
+
 function $(elem) {
   return document.querySelector(elem);
 }
@@ -6,26 +10,33 @@ let closeSidebarIcon = $(".close-sidebar-icon");
 let sidebar = $("header");
 let mainContent = $("main");
 
+
 async function getWorldStatistics(url) {
   try {
-    let response = await fetch(url)
-    let data = await response.json();
+    const response = await fetch(url)
+    const data = await response.json();
 
     // Cases
     let cases = $('#cases');
+    let percCasesWorld = $('#percCasesWorld');
     cases.innerHTML = data.cases.toLocaleString();
+    percCasesWorld.innerHTML = ((data.cases / 7800000000) * 100).toFixed(2) + '%';
 
     // Deaths
     let deaths = $('#deaths');
+    let percDeathsWorld = $('#percDeathsWorld');
     deaths.innerHTML = data.deaths.toLocaleString();
+    percDeathsWorld.innerHTML = ((data.deaths / data.cases) * 100).toFixed(2) + '%';
 
     // Recovered
     let recovered = $('#recovered');
+    let percRecoveredWorld = $('#percRecoveredWorld');
     recovered.innerHTML = data.recovered.toLocaleString();
+    percRecoveredWorld.innerHTML = ((data.recovered / data.cases) * 100).toFixed(2) + '%';
 
-    // Affected countries
-    let affectedCountries = $('#affectedCountries');
-    affectedCountries.innerHTML = data.todayCases.toLocaleString();
+    // Today cases
+    let todayCasesWorld = $('#todayCasesWorld');
+    todayCasesWorld.innerHTML = data.todayCases.toLocaleString();
 
     // Updated
     let updated = $('#updated');
@@ -39,20 +50,26 @@ async function getWorldStatistics(url) {
 
 async function getHRV(url) {
   try {
-    let response = await fetch(url)
-    let data = await response.json();
+    const response = await fetch(url)
+    const data = await response.json();
 
     // Cases
     let cases = $('#casesHrv');
+    let percCasesHrv = $('#percCasesHrv');
     cases.innerHTML = data.cases.toLocaleString();
+    percCasesHrv.innerHTML = ((data.cases / 4076000) * 100).toFixed(2) + '%';
 
     // Deaths
     let deaths = $('#deathsHrv');
+    let percDeathsHrv = $('#percDeathsHrv');
     deaths.innerHTML = data.deaths.toLocaleString();
+    percDeathsHrv.innerHTML = ((data.deaths / data.cases) * 100).toFixed(2) + '%';
 
     // Recovered
     let recovered = $('#recoveredHrv');
+    let percRecoveredHrv = $('#percRecoveredHrv');
     recovered.innerHTML = data.recovered.toLocaleString();
+    percRecoveredHrv.innerHTML = ((data.recovered / data.cases) * 100).toFixed(2) + '%';
 
     // Affected today
     let todayCases = $('#todayCasesHrv');
@@ -80,9 +97,10 @@ async function getAllCountries(url) {
         deaths: country.deaths
       }
       mapData.push(mapCountry);
-
       createListElement(country);
     });
+
+    let top5 = mapData.slice(0, 5);
 
     let neighbouringCountries = countries.filter(res =>
       res.country == "Hungary" ||
@@ -92,6 +110,7 @@ async function getAllCountries(url) {
       res.country == "Montenegro");
     createNeighbouringChart(neighbouringCountries);
     createMap(mapData);
+    createTop5Cases(top5);
   }
   catch (err) {
     console.log(err);
@@ -204,7 +223,6 @@ function createListElement(country) {
   li.append(img, div);
   div.append(h4, spanWarning, spanDanger);
 }
-
 
 
 function createMap(mapData) {
@@ -564,16 +582,58 @@ function createHistoryChartAll(casesHistory, deathsHistory, recoveredHistory) {
 }
 
 
+function createTop5Cases(data) {
+  am4core.useTheme(am4themes_animated);
+
+  var chart = am4core.create("chartdiv4", am4charts.PieChart);
+
+  chart.responsive.enabled = true;
+
+  chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+  chart.data = JSON.parse(JSON.stringify(data));
+  chart.radius = am4core.percent(70);
+  chart.innerRadius = am4core.percent(40);
+  chart.startAngle = 180;
+  chart.endAngle = 360;
+
+  var series = chart.series.push(new am4charts.PieSeries());
+  series.dataFields.value = "cases";
+  series.dataFields.category = "name";
+  // series.tooltipText = "Zaraženih: [bold]{cases}[/]";
+  series.tooltip.autoTextColor = false;
+  series.tooltip.label.fill = am4core.color("#fff");
+  series.labels.template.fill = am4core.color("#fff");
+  series.ticks.template.disabled = true;
+
+
+  series.slices.template.cornerRadius = 10;
+  series.slices.template.innerCornerRadius = 7;
+  series.slices.template.draggable = true;
+  series.slices.template.inert = true;
+  series.alignLabels = false;
+
+  series.hiddenState.properties.startAngle = 90;
+  series.hiddenState.properties.endAngle = 90;
+
+  chart.legend = new am4charts.Legend();
+  chart.legend.labels.template.fill = am4core.color("#fff");
+  chart.legend.valueLabels.template.fill = am4core.color("#fff");
+
+}
+
 
 // Close sidebar
 function openSidebar() {
   sidebar.style.left = "0";
   closeSidebarIcon.style.right = "0";
+  closeSidebarIcon.classList.add("fa-times");
 }
 
 function closeSidebar() {
   sidebar.style.left = "-320px";
   closeSidebarIcon.style.right = "-40px";
+  closeSidebarIcon.classList.remove("fa-times");
 }
 
 function toggleSidebar() {
@@ -602,6 +662,13 @@ var x = window.matchMedia("(max-width: 1024px)");
 mediaQueryMatches(x);
 x.addListener(mediaQueryMatches);
 
+
+window.addEventListener('load', (event) => {
+  setTimeout(() => {
+    $("body").style.overflowY = "scroll";
+    $("#loader").style.display = "none";
+  }, 1500);
+});
 
 
 getAllCountries("https://corona.lmao.ninja/countries?sort=cases");

@@ -29,7 +29,7 @@
     </div>
 
     <!-- Close header -->
-    <i class="fas fa-angle-left close-sidebar-icon"></i>
+    <i class="fas fa-times close-sidebar-icon"></i>
   </header>
 
   <!-- Main container -->
@@ -37,7 +37,7 @@
 
     <!-- Top bar -->
     <section id="topbar" class="pb-3">
-      <div class="container-fluid d-flex align-items-center justify-content-center justify-content-lg-end">
+      <div class="container-fluid d-flex align-items-center justify-content-center justify-content-lg-end bg-secondary">
         <p class="text-white mb-0">Ažurirano: <span id="updated"></span></p>
       </div>
     </section>
@@ -59,44 +59,53 @@
 
                 <!-- Recovered -->
                 <div class="col-6 col-lg-3 mb-30 mb-lg-0">
-                  <div class="co-card d-flex align-items-center bt-success">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-success">
                     <i class="fas fa-walking icon"></i>
                     <div>
                       <span class="bold">Ukupno oporavljenih:</span>
-                      <span id="recoveredHrv"></span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="recoveredHrv" class="badge badge-success"></span>
+                        <span id="percRecoveredHrv" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Cases -->
                 <div class="col-6 col-lg-3 mb-30 mb-lg-0">
-                  <div class="co-card d-flex align-items-center bt-orange">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-orange">
                     <i class="fas fa-procedures icon"></i>
                     <div>
                       <span class="bold">Ukupno zaraženih:</span>
-                      <span id="casesHrv"></span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="casesHrv" class="badge badge-orange"></span>
+                        <span id="percCasesHrv" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Deaths -->
                 <div class="col-6 col-lg-3">
-                  <div class="co-card d-flex align-items-center bt-danger">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-danger">
                     <i class="fas fa-bed icon"></i>
                     <div>
                       <span class="bold">Ukupno umrlih:</span>
-                      <span id="deathsHrv"></span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="deathsHrv" class="badge badge-danger"></span>
+                        <span id="percDeathsHrv" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Today cases -->
                 <div class="col-6 col-lg-3">
-                  <div class="co-card d-flex align-items-center bt-warning">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-warning">
                     <i class="fas fa-calendar-day icon"></i>
                     <div>
                       <span class="bold">Broj zaraženih danas:</span>
-                      <span id="todayCasesHrv"></span>
+                      <span id="todayCasesHrv" class="badge badge-warning"></span>
                     </div>
                   </div>
                 </div>
@@ -113,44 +122,53 @@
 
                 <!-- Recovered -->
                 <div class="col-6 col-lg-3 mb-30 mb-lg-0">
-                  <div class="co-card d-flex align-items-center bt-success">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-success">
                     <i class="fas fa-walking icon"></i>
                     <div>
                       <span class="bold">Ukupno oporavljenih:</span>
-                      <span id="recovered">218573</span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="recovered" class="badge badge-success"></span>
+                        <span id="percRecoveredWorld" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Cases -->
                 <div class="col-6 col-lg-3 mb-30 mb-lg-0">
-                  <div class="co-card d-flex align-items-center bt-orange">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-orange">
                     <i class="fas fa-procedures icon"></i>
                     <div>
                       <span class="bold">Ukupno zaraženih:</span>
-                      <span id="cases">1026688</span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="cases" class="badge badge-orange"></span>
+                        <span id="percCasesWorld" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Deaths -->
                 <div class="col-6 col-lg-3">
-                  <div class="co-card d-flex align-items-center bt-danger">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-danger">
                     <i class="fas fa-bed icon"></i>
                     <div>
                       <span class="bold">Ukupno umrlih:</span>
-                      <span id="deaths">54045</span>
+                      <div class="d-flex align-items-baseline justify-content-between">
+                        <span id="deaths" class="badge badge-danger"></span>
+                        <span id="percDeathsWorld" class="text-white"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Today cases -->
                 <div class="col-6 col-lg-3">
-                  <div class="co-card d-flex align-items-center bt-warning">
+                  <div class="co-card d-flex align-items-center justify-content-around bt-warning">
                     <i class="fas fa-calendar-day icon"></i>
                     <div>
                       <span class="bold">Broj zaraženih danas:</span>
-                      <span id="affectedCountries">206</span>
+                      <span id="todayCasesWorld" class="badge badge-warning">206</span>
                     </div>
                   </div>
                 </div>
@@ -203,20 +221,34 @@
       </div>
     </section>
 
+    <section class="py-3">
+      <div class="container-fluid">
+        <!-- Top zaraženih država -->
+        <div class="co-card">
+          <h3 class="h4 text-white">Top 5 zaraženih država</h3>
+          <div id="chartdiv4"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <section class="pt-3">
       <footer class="py-4">
         <div class="container-fluid">
-          <span class="text-white">© Ivan Bagić. All rights reserved.</span>
+          <span class="text-white small">© 2020. Made by <a
+              href="https://www.linkedin.com/in/ivan-bagi%C4%87-51723a143/" target="_blank" rel="noopener">Ivan
+              Bagić</a></span>
         </div>
       </footer>
     </section>
 
   </main>
 
-
-
-
+  <!-- Loading screen -->
+  <div id="loader">
+    <i class="fas fa-virus"></i>
+    <h3>COVID-19 STATISTIKA</h3>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
