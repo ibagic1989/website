@@ -678,8 +678,8 @@ window.addEventListener('load', (event) => {
 });
 
 
-getAllCountries("https://corona.lmao.ninja/countries?sort=cases");
-getWorldStatistics("https://corona.lmao.ninja/all");
-getHRV("https://corona.lmao.ninja/countries/HRV");
+getAllCountries("https://corona.lmao.ninja/v2/countries?sort=cases");
+getWorldStatistics("https://corona.lmao.ninja/v2/all");
+getHRV("https://corona.lmao.ninja/v2/countries/HRV");
 getHistoricalDataHrv("https://corona.lmao.ninja/v2/historical/HRV");
 getHistoricalDataAll("https://corona.lmao.ninja/v2/historical/all");
