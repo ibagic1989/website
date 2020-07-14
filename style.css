@@ -153,7 +153,8 @@ header {
   padding: 3px 6px;
   margin-right: 8px;
   text-transform: capitalize;
-  color: #fff
+  color: #fff;
+  white-space:nowrap;
 }
 
 .label-danger {
